@@ -4,25 +4,23 @@ SoftwareSerial mySerial(2, 3); // RX, TX
 
 void setup()
 {
+  
   // Open serial communications and wait for port to open:
   Serial.begin(9600);
-  while (!Serial) {
+  while (!Serial)
+  {
     ; // wait for serial port to connect. Needed for Native USB only
   }
 
-
-  //Serial.println("Goodnight moon!");
-
   // set the data rate for the SoftwareSerial port
   mySerial.begin(9600);
-//  mySerial.println("Hello, world?");
 }
 
 void loop() // run over and over
 {
   if (mySerial.available())
-    Serial.write(mySerial.read());
+    Serial.write(mySerial.read());  //Read data from UART and write it in console.
   if (Serial.available())
-    mySerial.write(Serial.read());
+    mySerial.write(Serial.read());  //Read data from console and write it in UART.
 }
 
